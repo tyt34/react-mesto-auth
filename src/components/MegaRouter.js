@@ -1,6 +1,5 @@
 import React from 'react'
 import { Route, Switch, Redirect, useHistory} from 'react-router-dom'
-//import App from './App'
 import Header from './Header'
 import App from './App'
 import Footer from './Footer'
@@ -18,21 +17,11 @@ function MegaRouter() {
   })
   const history = useHistory()
 
-  function handleLoginClick(identifier, password) { /* функция при нажатие на кнопку */
-    //e.preventDefault()
-    console.log('st -_-_- > ', identifier, password)
+  function handleLoginClick(identifier, password) {
     auth.authorize(identifier, password)
       .then(obj => {
-        console.log('mr -_- > ', obj) //  тут получаем токен
-        console.log('mr jwt > ', obj.token)
         if (obj.token) {
           localStorage.setItem('jwt', obj.token)
-          /*
-          setUserData({
-            username: obj.user.username,
-            email: obj.user.email
-          })
-          */
           setLoggedIn(true);
           history.push('/')
         }
@@ -61,8 +50,7 @@ function MegaRouter() {
     }
   }
 
-  function handleRegClick(data) { /* функция при нажатие на кнопку */
-    //e.preventDefault()
+  function handleRegClick(data) {
     console.log('reg -_-_- > ', data)
     auth.regg(data)
       .then(obj => {
@@ -70,18 +58,8 @@ function MegaRouter() {
       })
       .catch( err => console.log(' erer -> ', err))
   }
-  /*
-  const MainComponent = {
-    render() {
-      <>
-      <Header />
-      <App />
-      <Footer />
-      </>
-    }
-  }
-  */
-  const MainComponent = () => {
+
+  const MainComponent = () => { // не знаю как несколько компонентов отправить в ProtectedRoute, по этому объединил
     return (
       <>
       <Header />
@@ -93,75 +71,28 @@ function MegaRouter() {
 
   return (
     <Switch>
-
-    <Route path="/sign-in">
-      <div className='page'>
-        <Header title='Регистрация' link='/sign-up' />
-        <Login onLoginClick={handleLoginClick}/>
-      </div>
-    </Route>
-    <Route path="/sign-up">
-      <div className='page'>
-        <Header title='Войти' link='/sign-in' />
-        <Register onRegClick={handleRegClick}/>
-      </div>
-    </Route>
-    <ProtectedRoute
+      <Route path="/sign-in">
+        <div className='page'>
+          <Header title='Регистрация' link='/sign-up' />
+          <Login onLoginClick={handleLoginClick}/>
+          </div>
+        </Route>
+      <Route path="/sign-up">
+        <div className='page'>
+          <Header title='Войти' link='/sign-in' />
+          <Register onRegClick={handleRegClick}/>
+        </div>
+      </Route>
+      <ProtectedRoute
         path="/"
         loggedIn={loggedIn}
         component={MainComponent}
-    />
-    <Route>
+      />
+      <Route>
         {loggedIn ? <Redirect to="/" /> : <Redirect to="/sign-in" />}
-    </Route>
+      </Route>
     </Switch>
   )
 }
 
-
-/*
-<Switch>
-
-<Route path="/sign-in">
-  <div className='page'>
-    <Header title='Регистрация' link='/sign-up' />
-    <Login onLoginClick={handleLoginClick}/>
-  </div>
-</Route>
-<Route path="/sign-up">
-  <div className='page'>
-    <Header title='Войти' link='/sign-in' />
-    <Register onRegClick={handleRegClick}/>
-  </div>
-</Route>
-<ProtectedRoute
-    path="/"
-    loggedIn={loggedIn}
-    component={MainComponent}
-/>
-<Route>
-    {loggedIn ? <Redirect to="/" /> : <Redirect to="/sign-in" />}
-</Route>
-</Switch>
-*/
-
-/*
-<Route>
-    {loggedIn ? <Redirect to="/" /> : <Redirect to="/sign-in" />}
-</Route>
-*/
-
-
-/*
-<Switch>
-  <Route path="/sign-in">
-    <Header title='Регистрация'/>
-    <Enter title='Вход' subtitle='' buttonTitle='Войти' />
-  </Route>
-  <Route path="/sign-up">
-    <Header title='Войти'/>
-    <Enter title='Регистрация' subtitle='Уже зарегистрированы? Войти' buttonTitle='Зарегистрироваться' />
-  </Route>
-</Switch>
-*/
 export default MegaRouter

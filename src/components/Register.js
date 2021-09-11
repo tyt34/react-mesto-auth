@@ -1,8 +1,6 @@
 import React from 'react'
 
 function Register(props) {
-  //console.log(props)
-
   const [data, setData] = React.useState({
     identifier: '',
     password: '',
@@ -10,15 +8,12 @@ function Register(props) {
 
   function handleRegClick(e) {
     e.preventDefault()
-    let log = document.getElementById('enter__logi').value
+    let log = document.getElementById('enter__logi').value // наврное надо было делать красивее....
     let pas = document.getElementById('enter__pas').value
-    console.log(' click R ',log,' ',pas)
-    //const { username, password } = data
     setData({
       identifier: log,
       password: pas,
     })
-    console.log('now data R -> ', data)
     props.onRegClick(data)
   }
 

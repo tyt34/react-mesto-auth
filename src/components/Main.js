@@ -59,7 +59,7 @@ function Main(props) {
               onCardDelete={props.onCardDelete}
               />)
             )
-          } {/*// любой JSX нужно оборачивать в круглые скобки*/}
+          } 
         </section>
     </main>
   )

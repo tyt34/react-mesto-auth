@@ -1,8 +1,6 @@
 import React from 'react'
 
 function Login(props) {
-  //console.log(props)
-
   const [data, setData] = React.useState({
     identifier: '',
     password: '',
@@ -10,15 +8,12 @@ function Login(props) {
 
   function handleLoginClick(e) {
     e.preventDefault()
-    let log = document.getElementById('enter__login').value
+    let log = document.getElementById('enter__login').value // наврное надо было делать красивее....
     let pas = document.getElementById('enter__pass').value
-    console.log(' click L ',log,' ',pas)
-    //const { username, password } = data
     setData({
       identifier: log,
       password: pas,
     })
-    console.log('now data L -> ', data)
     props.onLoginClick(data)
   }
 

@@ -1,5 +1,4 @@
 import React from 'react'
-//import { Route, Switch, Redirect, useHistory } from 'react-router-dom'
 import Main from './Main'
 import ImagePopup from './ImagePopup'
 import api from '../utils/api'
@@ -33,7 +32,7 @@ function App() {
       api.getCardsFromServer(),
       api.getUserInfo()
     ])
-    .then( (values) => { /* А тут можно сделать деструктуризацию??? */
+    .then( (values) => { /* Тут, наверное, надо было делать деструктуризацию. Но терпение и труд, всё я устал */
       setCards(values[0])
       setCurrentUser(values[1])
     })
@@ -48,7 +47,7 @@ function App() {
     const isLiked = card.likes.some( (i) => {
       return i._id === currentUser._id
     })
-    let method // не понимаю, как это еще можно сократить
+    let method // кажется, это можно было сократить
     if (isLiked) {
       method = "DELETE"
     } else {

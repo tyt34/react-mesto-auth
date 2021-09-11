@@ -19,7 +19,6 @@ function PopupWithForm(props) {
           name={`${props.name}`}
           className={`popup-${props.name}__form popup__form`}
         >
-          {/*{props.children && <>{props.children}</>}*/} {/*можно проще*/}
           {props.children}
           <button
             id={`popup-${props.name}__save`}
