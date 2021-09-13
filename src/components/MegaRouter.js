@@ -39,10 +39,7 @@ function MegaRouter() {
     auth.authorize(data)
       .then((obj) => {
         if (obj.token) {
-          console.log('email -> ', data.identifier)
-          console.log('pass--> ', data.password)
           setIsEmail(data.identifier)
-          console.log(' now email -> ', isEmail)
           localStorage.setItem('jwt', obj.token)
           setLoggedIn(true)
           history.push('/')
@@ -77,11 +74,8 @@ function MegaRouter() {
   }
 
   function handleRegClick(data) {
-    console.log('reg -_-_- > ', data)
     auth.regg(data)
       .then(obj => {
-        console.log('reg-> ', data)
-        //setisInfoOpen(true)
         setIsRes(true)
         setIsTitle('Вы успешно зарегистрировались!')
         setIsAlt('Изображение информирующее, что всё хорошо!')
@@ -137,15 +131,3 @@ function MegaRouter() {
 }
 
 export default MegaRouter
-/*
-<InfoTooltip
-  isOpen={isInfoOpen}
-  title={'Вы успешно зарегистрировались!'}
-  alt={'Изображение иллюстрирующие, что всё хорошо!'}
-  res={true}
-/>
-*/
-/*
-isOpen={isEditAvatarPopupOpen}
-onClose={closeAllPopups}
-*/

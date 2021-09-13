@@ -3,7 +3,6 @@ import on from '../images/enter_on.svg'
 import off from '../images/enter_off.svg'
 
 function InfoTooltip(props) {
-  console.log('ITL -> ', props.isOpen)
 
   return (
     <div

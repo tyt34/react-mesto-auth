@@ -21,7 +21,7 @@ export const authorize = (data) => {
   })
   .then((res) => getResponseData(res))
   /*
-  .then((res) => { // почему этот вариант не работает? И как dызвать функцию ссылкой без аргумента?
+  .then((res) => { // почему этот вариант не работает? И как вызвать функцию ссылкой без аргумента?
     console.log('1=> > ', res)
     //getResponseData(res)
     return res.json()
@@ -42,13 +42,6 @@ export const regg = (data) => {
     })
   })
   .then((res) => getResponseData(res))
-  /*
-  .then((res) => { // почему этот вариант не работает? И как dызвать функцию ссылкой без аргумента?
-    console.log('2=> > ', res)
-    //getResponseData(res)
-    return res.json()
-  })
-  */
 }
 
 export const getContent = (token) => {

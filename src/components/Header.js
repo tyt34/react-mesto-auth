@@ -1,12 +1,9 @@
 import logo from '../images/logo.svg'
 
 function Header(props) {
-  console.log('h=> ', props)
 
   function ShowEm(prop) {
-    console.log('sE -> ', prop)
     if (prop.email) {
-      console.log('em start ')
       return (
         <>
         <p className="header__email">{props.email}</p>
@@ -14,7 +11,6 @@ function Header(props) {
         </>
       )
     } else {
-      //console.log('em fal')
       return <> </>
     }
   }
@@ -29,4 +25,3 @@ function Header(props) {
 }
 
 export default Header;
-//`<p className="header__email">{props.email}</p>`

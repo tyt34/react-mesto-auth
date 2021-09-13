@@ -1,9 +1,8 @@
 import React from 'react';
 import { Route, Redirect } from "react-router-dom";
 
-//const ProtectedRoute = ({ component: props.children, ...props  }) => {
 const ProtectedRoute = (data) => {
-  const Component = () => { // а еще короче это записать можно? 
+  const Component = () => { // а еще короче это записать можно?
     return (
       data.component.props.children
     )
