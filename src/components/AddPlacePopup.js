@@ -11,6 +11,8 @@ function AddPlacePopup(props) {
       place,
       linkPlace
     })
+    setPlace('')
+    setLinkPlace('')
   }
 
   function handleChangePlace(e) {

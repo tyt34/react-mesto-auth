@@ -47,19 +47,20 @@ function Main(props) {
 
         <section className="places">
           {
-            props.cards.map( (card) => (<Card
-              name={card.name}
-              img={card.link}
-              likes={card.likes}
-              key={card._id}
-              id={card._id}
-              onCardClick={props.onCardClick}
-              isOwn={card.owner}
-              onCardLike={props.onCardLike}
-              onCardDelete={props.onCardDelete}
+            props.cards.map( (card) => (
+              <Card
+                name={card.name}
+                img={card.link}
+                likes={card.likes}
+                key={card._id}
+                id={card._id}
+                onCardClick={props.onCardClick}
+                isOwn={card.owner}
+                onCardLike={props.onCardLike}
+                onCardDelete={props.onCardDelete}
               />)
             )
-          } 
+          }
         </section>
     </main>
   )

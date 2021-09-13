@@ -27,14 +27,26 @@ function App() {
     img:  '',
   })
 
+  React.useEffect(() => { /* new */
+      const closeByEscape = (e) => {
+        if (e.key === 'Escape') {
+          closeAllPopups();
+        }
+      }
+
+      document.addEventListener('keydown', closeByEscape)
+
+      return () => document.removeEventListener('keydown', closeByEscape)
+  }, [])
+
   React.useEffect( () => {
     Promise.all([
       api.getCardsFromServer(),
       api.getUserInfo()
     ])
-    .then( (values) => { /* Тут, наверное, надо было делать деструктуризацию. Но терпение и труд, всё я устал */
-      setCards(values[0])
-      setCurrentUser(values[1])
+    .then( ([initialCards, userData]) => {
+      setCards(initialCards)
+      setCurrentUser(userData)
     })
     .catch(
       (err) => {

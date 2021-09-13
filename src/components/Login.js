@@ -1,20 +1,23 @@
 import React from 'react'
 
 function Login(props) {
-  const [data, setData] = React.useState({
-    identifier: '',
-    password: '',
-  });
+  const [login, setLogin] = React.useState('')
+  const [pass, setPass] = React.useState('')
+
+  function handleChangeLogin(e) {
+    setLogin(e.target.value)
+  }
+
+  function handleChangePass(e) {
+    setPass(e.target.value)
+  }
 
   function handleLoginClick(e) {
     e.preventDefault()
-    let log = document.getElementById('enter__login').value // наврное надо было делать красивее....
-    let pas = document.getElementById('enter__pass').value
-    setData({
-      identifier: log,
-      password: pas,
+    props.onLoginClick({
+      identifier: login,
+      password: pass,
     })
-    props.onLoginClick(data)
   }
 
   return (
@@ -25,9 +28,11 @@ function Login(props) {
         action="index.html"
         method="post"
         name="login"
+        onSubmit={handleLoginClick}
       >
         <input
-          id="enter__login"
+          value={login}
+          onChange={handleChangeLogin}
           className="enter__input"
           name="name"
           type="text"
@@ -35,7 +40,8 @@ function Login(props) {
           required
         />
         <input
-          id="enter__pass"
+          value={pass}
+          onChange={handleChangePass}
           className="enter__input"
           name="about"
           type="password"
@@ -45,7 +51,6 @@ function Login(props) {
         <button
           className="enter__save"
           type="submit"
-          onClick={handleLoginClick}
         >
           Войти
         </button>

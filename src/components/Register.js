@@ -1,20 +1,23 @@
 import React from 'react'
 
 function Register(props) {
-  const [data, setData] = React.useState({
-    identifier: '',
-    password: '',
-  })
+  const [login, setLogin] = React.useState('')
+  const [pass, setPass] = React.useState('')
 
   function handleRegClick(e) {
     e.preventDefault()
-    let log = document.getElementById('enter__logi').value // наврное надо было делать красивее....
-    let pas = document.getElementById('enter__pas').value
-    setData({
-      identifier: log,
-      password: pas,
+    props.onRegClick({
+      identifier: login,
+      password: pass,
     })
-    props.onRegClick(data)
+  }
+
+  function handleChangeLogin(e) {
+    setLogin(e.target.value)
+  }
+
+  function handleChangePass(e) {
+    setPass(e.target.value)
   }
 
 
@@ -27,9 +30,11 @@ function Register(props) {
         action="index.html"
         method="post"
         name="reg"
+        onSubmit={handleRegClick}
       >
         <input
-          id="enter__logi"
+          value={login}
+          onChange={handleChangeLogin}
           className="enter__input"
           name="name"
           type="text"
@@ -37,7 +42,8 @@ function Register(props) {
           required
         />
         <input
-          id="enter__pas"
+          value={pass}
+          onChange={handleChangePass}
           className="enter__input"
           name="about"
           type="password"
@@ -47,7 +53,6 @@ function Register(props) {
         <button
           className="enter__save"
           type="submit"
-          onClick={handleRegClick}
         >
           Зарегистрироваться
         </button>
