@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Redirect } from "react-router-dom";
 
 const ProtectedRoute = (data) => {
-  const Component = () => { // а еще короче это записать можно?
+  const Component = () => {
     return (
       data.component.props.children
     )
