@@ -4,7 +4,8 @@ const options = {
   token: '54e47a58-a3be-4854-bdb0-d150680efc4c',
   cohortId: 'cohort-24',
   myId: "34f519f4db31bcdefd2e9e7c",
-  url: 'https://mesto.nomoreparties.co',
+  //url: 'https://mesto.nomoreparties.co',
+  url: 'https://api.good.nomoredomains.xyz',
 }
 
 class Api {
