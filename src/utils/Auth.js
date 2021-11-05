@@ -1,7 +1,6 @@
 export const BASE_URL = 'https://auth.nomoreparties.co'
 
 function getResponseData(res) { /* точная копия из api.js */
-  console.log('gRD status -> ', res.statusText)
   if (!res.ok) {
     return Promise.reject(`Auth-Ошибка: ${res.status}`)
   }
