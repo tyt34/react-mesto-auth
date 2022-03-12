@@ -23,16 +23,10 @@
 * Возможность добавить свою карточку на страницу.
 * На каждую карточку можно поставить/убрать лайк.
 
-## Планы по доработке
-* Заменить хранение локальных данных с *localStorage* на *cookie*.
+[Ссылка на макет в Figma](https://www.figma.com/file/2cn9N9jSkmxD84oJik7xL7/JavaScript.-Sprint-4).
 
 ## Запуск приложения
 1. npm i
 2. npm start
 
-<tr>
-    <hr>
-</tr>
-
-[Ссылка на макет в Figma](https://www.figma.com/file/2cn9N9jSkmxD84oJik7xL7/JavaScript.-Sprint-4).
 
