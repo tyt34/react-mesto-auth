@@ -38,7 +38,7 @@ function MegaRouter() {
   const onSignOut = () => {
     localStorage.removeItem('jwt');
     setLoggedIn(false);
-    history.push('/sign-in');
+    history.push('/login');
   }
 
   function handleLoginClick(data) {
@@ -73,13 +73,9 @@ function MegaRouter() {
             */
             setLoggedIn(true)
             history.push('/')
-          } else if (jwt) {
-            setIsEmail(res.data.email)
-            setLoggedIn(true)
-            history.push('/')
           }
         })
-        .catch( err => console.log('MR-Ошибка2: ', err))
+        .catch( err => console.log('MR-Ошибка1: ', err))
     }
   }
 
@@ -96,7 +92,7 @@ function MegaRouter() {
         setIsTitle('Что-то пошло не так! Попробуйте ещё раз.')
         setIsAlt('Изображение информирующее, что всё плохо!')
         setisInfoOpen(true)
-        console.log('MR-Ошибка3: ', err)
+        console.log('MR-Ошибка2: ', err)
       })
   }
 
@@ -104,17 +100,11 @@ function MegaRouter() {
     <div className='page'>
       <Switch>
         <Route path="/sign-in">
-            <Header
-              title='Регистрация'
-              link='/sign-up'
-            />
+            <Header title='Регистрация' link='/sign-up' />
             <Login onLoginClick={handleLoginClick}/>
           </Route>
         <Route path="/sign-up">
-            <Header
-              title='Войти'
-              link='/sign-in'
-            />
+            <Header title='Войти' link='/sign-in' />
             <Register onRegClick={handleRegClick}/>
             <InfoTooltip
               isOpen={isInfoOpen}

@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom'
 import './index.css'
 import reportWebVitals from './reportWebVitals'
 import MegaRouter from './components/MegaRouter'
-//import App from './components/App'
 import { BrowserRouter } from 'react-router-dom'
 
 ReactDOM.render(
