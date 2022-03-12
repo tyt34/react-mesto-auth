@@ -23,12 +23,6 @@ function MegaRouter() {
     password: ''
   })
   */
-
-  React.useEffect(() => {
-    // Update the document title using the browser API
-    document.title = `Turbo Mesto For You Bro App`;
-  });
-
   const history = useHistory()
 
   function closePopupInfo() {
