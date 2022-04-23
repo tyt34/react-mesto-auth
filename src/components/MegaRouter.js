@@ -17,12 +17,6 @@ function MegaRouter() {
   const [isAlt, setIsAlt] = React.useState('Изображение информирующее, что всё плохо!')
   const [isRes, setIsRes] = React.useState(true)
   const [isEmail, setIsEmail] = React.useState('')
-  /*
-  const [userData, setUserData] = React.useState({
-    identifier: '',
-    password: ''
-  })
-  */
   const history = useHistory()
 
   function closePopupInfo() {
@@ -59,12 +53,6 @@ function MegaRouter() {
       auth.getContent(jwt)
         .then( (res) => {
           if (res.email) {
-            /*
-            setUserData({
-              username: res.username,
-              email: res.email
-            })
-            */
             setLoggedIn(true)
             history.push('/')
           }

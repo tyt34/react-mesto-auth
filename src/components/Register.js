@@ -1,12 +1,12 @@
 import React from 'react'
 
-function Register(props) {
+function Register({onRegClick}) {
   const [login, setLogin] = React.useState('')
   const [pass, setPass] = React.useState('')
 
   function handleRegClick(e) {
     e.preventDefault()
-    props.onRegClick({
+    onRegClick({
       identifier: login,
       password: pass,
     })
@@ -19,7 +19,6 @@ function Register(props) {
   function handleChangePass(e) {
     setPass(e.target.value)
   }
-
 
   return (
     <div className="enter__container">

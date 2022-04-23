@@ -55,18 +55,13 @@ function App() {
     )
   }, [])
 
-  function handleCardLikeDislike(card) {
-    const isLiked = card.likes.some( (i) => {
+  function handleCardLikeDislike({likes, id}) {
+    const isLiked = likes.some( (i) => {
       return i._id === currentUser._id
     })
-    let method // кажется, это можно было сократить
-    if (isLiked) {
-      method = "DELETE"
-    } else {
-      method = 'PUT'
-    }
-    api.changeLikeCardStatus(card.id, method).then( (newCard) => {
-      setCards( (cards) => cards.map( (c) => c._id === card.id ? newCard : c))
+    const method = isLiked ? 'DELETE' : 'PUT'
+    api.changeLikeCardStatus(id, method).then( (newCard) => {
+      setCards( (cards) => cards.map( (c) => c._id === id ? newCard : c))
     }).catch(
       (err) => {
         console.log('3 Ошибка ===> ', err)
@@ -74,9 +69,9 @@ function App() {
     )
   }
 
-  function handleCardDelete(card) {
-    api.delCard(card.id).then( (newCard) => {
-      const newArrCards = cards.filter( c => c._id !== card.id )
+  function handleCardDelete({id}) {
+    api.delCard(id).then( (newCard) => {
+      const newArrCards = cards.filter( c => c._id !== id )
       setCards(newArrCards)
     }).catch(
       (err) => {
@@ -97,10 +92,10 @@ function App() {
     setAddPlacePopupOpen(true)
   }
 
-  function handleCardClick(props) {
+  function handleCardClick({name, img}) {
     setSelectedCard({
-      name: props.name,
-      img: props.img,
+      name,
+      img,
     })
   }
 

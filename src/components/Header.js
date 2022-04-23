@@ -1,7 +1,7 @@
 import logo from '../images/logo.svg'
 
 function Header(props) {
-
+  console.log(props);
   function ShowEm(prop) {
     if (prop.email) {
       return (

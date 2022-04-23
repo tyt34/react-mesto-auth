@@ -2,20 +2,20 @@ import React from "react";
 import on from '../images/enter_on.svg'
 import off from '../images/enter_off.svg'
 
-function InfoTooltip(props) {
+function InfoTooltip({isOpen, title, alt, res, onClose}) {
 
   return (
     <div
-      className={props.isOpen ? "popup popup_open" : "popup"}
+      className={isOpen ? "popup popup_open" : "popup"}
     >
       <div className="popup__container">
         <button
           className="popup__close"
           type="button"
-          onClick={props.onClose}
+          onClick={onClose}
         ></button>
-        <img className="popup__img" src={props.res ? on : off} alt={props.alt} />
-        <p className="popup__subtitle">{props.title}</p>
+        <img className="popup__img" src={res ? on : off} alt={alt} />
+        <p className="popup__subtitle">{title}</p>
       </div>
     </div>
   )

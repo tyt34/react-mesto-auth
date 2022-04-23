@@ -1,7 +1,7 @@
 import React from "react";
 import CurrentUserContext from "../contexts/CurrentUserContext";
 
-function Card(props) {
+function Card({name, img, likes, id, onCardClick, isOwn, onCardLike, onCardDelete}) {
   const currenUser = React.useContext(CurrentUserContext);
 
   function createAltImg(specialWord) {
@@ -9,20 +9,20 @@ function Card(props) {
   }
 
   function handleClick() {
-    props.onCardClick(props);
+    onCardClick({name, img});
   }
 
   function handleLikeClick() {
-    props.onCardLike(props);
+    onCardLike({likes, id});
   }
 
   function handleDeleteClick() {
-    props.onCardDelete(props)
+    onCardDelete({id})
   }
 
-  const isOwn = props.isOwn._id === currenUser._id;
-  const cardDeleteButtonClassName = `${isOwn ? "place__del" : "nothing"}`;
-  const isLiked = props.likes.some((i) => i._id === currenUser._id);
+  const isOwnID = isOwn._id === currenUser._id;
+  const cardDeleteButtonClassName = `${isOwnID ? "place__del" : "nothing"}`;
+  const isLiked = likes.some((i) => i._id === currenUser._id);
   const cardLikeButtonClassName = `${
     isLiked ? "place__like place-like" : "place__like"
   }`;
@@ -31,9 +31,9 @@ function Card(props) {
     <article className="place">
       <img
         className="place__img"
-        src={props.img}
+        src={img}
         onClick={handleClick}
-        alt={createAltImg(props.name)}
+        alt={createAltImg(name)}
       />
       <button
         onClick={handleDeleteClick}
@@ -41,14 +41,14 @@ function Card(props) {
         type="button"
       ></button>
       <div className="place__option">
-        <h2 className="place__title">{props.name}</h2>
+        <h2 className="place__title">{name}</h2>
         <div className="place__like-container">
           <button
             onClick={handleLikeClick}
             className={cardLikeButtonClassName}
             type="button"
           ></button>
-          <p className="place__num">{props.likes.length}</p>
+          <p className="place__num">{likes.length}</p>
         </div>
       </div>
     </article>

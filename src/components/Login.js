@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Login(props) {
+function Login({onLoginClick}) {
   const [login, setLogin] = React.useState('')
   const [pass, setPass] = React.useState('')
 
@@ -14,7 +14,7 @@ function Login(props) {
 
   function handleLoginClick(e) {
     e.preventDefault()
-    props.onLoginClick({
+    onLoginClick({
       identifier: login,
       password: pass,
     })
