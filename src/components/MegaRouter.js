@@ -82,11 +82,19 @@ function MegaRouter() {
     <div className='page'>
       <Switch>
         <Route path="/sign-in">
-            <Header title='Регистрация' link='/sign-up' />
-            <Login onLoginClick={handleLoginClick}/>
+            <Header
+              title='Регистрация'
+              link='/sign-up'
+            />
+            <Login
+              onLoginClick={handleLoginClick}
+            />
           </Route>
         <Route path="/sign-up">
-            <Header title='Войти' link='/sign-in' />
+            <Header
+              title='Войти'
+              link='/sign-in'
+            />
             <Register onRegClick={handleRegClick}/>
             <InfoTooltip
               isOpen={isInfoOpen}

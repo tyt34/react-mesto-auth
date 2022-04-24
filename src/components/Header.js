@@ -1,13 +1,12 @@
 import logo from '../images/logo.svg'
 
-function Header(props) {
-  console.log(props);
+function Header({title, link, email, onSignOut}) {
   function ShowEm(prop) {
     if (prop.email) {
       return (
         <>
-        <p className="header__email">{props.email}</p>
-        <button className="header__close" onClick={props.onSignOut}>Выйти</button>
+        <p className="header__email">{email}</p>
+        <button className="header__close" onClick={onSignOut}>Выйти</button>
         </>
       )
     } else {
@@ -18,8 +17,10 @@ function Header(props) {
   return (
       <header className="header">
         <img className="header__logo" src={logo} alt="Логотип сайта" />
-        <a className="header__title" href={props.link}>{props.title}</a>
-        <ShowEm email={props.email}/>
+        <a className="header__title" href={link}>{title}</a>
+        <ShowEm
+          email={email}
+        />
       </header>
   )
 }
